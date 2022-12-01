@@ -1,16 +1,13 @@
-# qscondominio
+# Qualidade em Serviço - Condomínio  
 
-A new Flutter project.
+This application aims to bring facilities to condominium administrators as well as to condominium members, among the various solutions that this app proposes to generate are the following Control of orders.
 
-## Getting Started
+# Implemented features:
 
-This project is a starting point for a Flutter application.
+- [ ] - Orders controls
+- [ ] - Announcements
+- [ ] - Visitors control
+- [ ] - Places reservation
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
