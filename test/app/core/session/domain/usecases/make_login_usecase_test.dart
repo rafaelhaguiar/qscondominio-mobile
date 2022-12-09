@@ -51,4 +51,40 @@ void main() {
     expect(result, isA<Left>());
     expect(result.fold((l) => l, (r) => r), isA<ServerFailure>());
   }));
+
+  group('MakeLoginUsecase - Params equatable test', () {
+    late MakeLoginParams makeLoginParamsBase;
+    late MakeLoginParams makeLoginParamsEqualsBase;
+    late MakeLoginParams makeLoginParamsDifferentAllParams;
+    late MakeLoginParams makeLoginParamsDifferentUsername;
+    late MakeLoginParams makeLoginParamsDifferentPassword;
+
+    setUp(() {
+      makeLoginParamsBase = MakeLoginParams(
+          userName: "mulder@gmail.com", password: 'iWantToBelieve');
+      makeLoginParamsEqualsBase = MakeLoginParams(
+          userName: "mulder@gmail.com", password: 'iWantToBelieve');
+      makeLoginParamsDifferentAllParams = MakeLoginParams(
+          userName: "scully@gmail.com", password: 'thereIsExplanation');
+      makeLoginParamsDifferentUsername = MakeLoginParams(
+          userName: "scully@gmail.com", password: 'iWantToBelieve');
+      makeLoginParamsDifferentPassword = MakeLoginParams(
+          userName: "rafaelhenriqueggt@gmail.com",
+          password: 'thereIsExplanation');
+    });
+    test(
+        'MakeLoginUsecase - Should be true when params has the same username and password ',
+        () {
+      expect(makeLoginParamsBase, equals(makeLoginParamsBase));
+      expect(makeLoginParamsBase, equals(makeLoginParamsEqualsBase));
+    });
+
+    test(
+        'MakeLoginUsecase - Should be false when params is not the same username and password ',
+        () {
+      expect(makeLoginParamsBase, isNot(makeLoginParamsDifferentAllParams));
+      expect(makeLoginParamsBase, isNot(makeLoginParamsDifferentUsername));
+      expect(makeLoginParamsBase, isNot(makeLoginParamsDifferentPassword));
+    });
+  });
 }
