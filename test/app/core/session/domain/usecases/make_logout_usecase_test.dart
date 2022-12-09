@@ -21,7 +21,7 @@ void main() {
       'MakeLogoutUsecase - should return a Right and this Right need be an bool true',
       (() async {
     when(() => authRepository.makeLogout())
-        .thenAnswer((_) async => Right(true));
+        .thenAnswer((_) async => const Right(true));
     verifyNever(() => makeLogoutUsecase(NoParams()));
     final result = await makeLogoutUsecase(NoParams());
     verify(() => makeLogoutUsecase(NoParams())).called(1);

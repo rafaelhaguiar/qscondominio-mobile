@@ -20,7 +20,7 @@ void main() {
 
     sessionEntity = MockSessionEntity();
     makeLoginUsecase = MakeLoginUsecase(repository: authRepository);
-    makeLoginParams = MakeLoginParams(
+    makeLoginParams = const MakeLoginParams(
         userName: "rafaelhenriqueggt@gmail.com", password: 'iWantToBelieve');
   });
 
@@ -60,15 +60,15 @@ void main() {
     late MakeLoginParams makeLoginParamsDifferentPassword;
 
     setUp(() {
-      makeLoginParamsBase = MakeLoginParams(
+      makeLoginParamsBase = const MakeLoginParams(
           userName: "mulder@gmail.com", password: 'iWantToBelieve');
-      makeLoginParamsEqualsBase = MakeLoginParams(
+      makeLoginParamsEqualsBase = const MakeLoginParams(
           userName: "mulder@gmail.com", password: 'iWantToBelieve');
-      makeLoginParamsDifferentAllParams = MakeLoginParams(
+      makeLoginParamsDifferentAllParams = const MakeLoginParams(
           userName: "scully@gmail.com", password: 'thereIsExplanation');
-      makeLoginParamsDifferentUsername = MakeLoginParams(
+      makeLoginParamsDifferentUsername = const MakeLoginParams(
           userName: "scully@gmail.com", password: 'iWantToBelieve');
-      makeLoginParamsDifferentPassword = MakeLoginParams(
+      makeLoginParamsDifferentPassword = const MakeLoginParams(
           userName: "rafaelhenriqueggt@gmail.com",
           password: 'thereIsExplanation');
     });

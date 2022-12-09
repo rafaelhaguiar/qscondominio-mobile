@@ -17,9 +17,9 @@ class AppRoutes {
 
   //Route map
   static final routes = {
-    splash: (BuildContext context) => SplashPage(),
-    login: (BuildContext context) => LoginPage(),
-    home: (BuildContext context) => HomePage(),
-    orders: (BuildContext context) => OrdersPage(),
+    splash: (BuildContext context) => const SplashPage(),
+    login: (BuildContext context) => const LoginPage(),
+    home: (BuildContext context) => const HomePage(),
+    orders: (BuildContext context) => const OrdersPage(),
   };
 }
