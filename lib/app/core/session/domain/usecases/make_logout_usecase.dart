@@ -2,11 +2,11 @@
 import 'package:dartz/dartz.dart';
 
 import 'package:qscondominio/app/core/error/failures.dart';
-import 'package:qscondominio/app/core/session/domain/repositories/auth_repositories.dart';
+import 'package:qscondominio/app/core/session/domain/repositories/auth_repository.dart';
 import 'package:qscondominio/app/core/usecases/usecase.dart';
 
 class MakeLogoutUsecase extends UseCase<bool, NoParams> {
-  final AuthRepositories repository;
+  final AuthRepository repository;
   MakeLogoutUsecase({
     required this.repository,
   });

@@ -4,11 +4,11 @@ import 'package:equatable/equatable.dart';
 
 import 'package:qscondominio/app/core/error/failures.dart';
 import 'package:qscondominio/app/core/session/domain/entities/session_entity.dart';
-import 'package:qscondominio/app/core/session/domain/repositories/auth_repositories.dart';
+import 'package:qscondominio/app/core/session/domain/repositories/auth_repository.dart';
 import 'package:qscondominio/app/core/usecases/usecase.dart';
 
 class MakeLoginUsecase implements UseCase<SessionEntity, MakeLoginParams> {
-  final AuthRepositories repository;
+  final AuthRepository repository;
   MakeLoginUsecase({
     required this.repository,
   });

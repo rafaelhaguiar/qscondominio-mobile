@@ -6,14 +6,14 @@ enum Visions { condominiumManager, condo, residentMaster, residentDependent }
 
 abstract class SessionEntity extends Equatable {
   final int id;
-  final int name;
+  final String name;
   final List<Visions> visions;
   final List<UnitEntity> units;
 
-  const SessionEntity(
-    this.units, {
+  const SessionEntity({
     required this.id,
     required this.name,
     required this.visions,
+    required this.units,
   });
 }
