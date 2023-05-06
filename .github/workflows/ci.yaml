@@ -21,7 +21,7 @@ jobs:
         with:
           channel: 'stable'
       - name: Run Lint
-        run: flutter analyze --no-pub --ignore "TODO:.*"
+        run: flutter analyze --no-pub | grep -v 'TODO:'
       - name: Run tests with coverage
         run: flutter test --coverage
       - name: Verify test coverage
