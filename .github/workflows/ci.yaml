@@ -23,12 +23,12 @@ jobs:
         with:
           channel: 'stable'
       - name: Run Lint
-        run: flutter analyze --no-pub | grep -v 'TODO:'
+        run: /bin/bash -c "flutter analyze --no-pub | grep -v 'TODO:'"
       - name: Add coverage to PATH
         run: echo "PATH=\$PATH:~/.pub-cache/bin" >> $GITHUB_ENV
       - name: Run tests with coverage
         if: github.event_name == 'pull_request'
-        run: flutter test --coverage
+        run: /bin/bash -c "flutter test --coverage"
       - name: Verify test coverage
         if: github.event_name == 'pull_request'
         run: |
