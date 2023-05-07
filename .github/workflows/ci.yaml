@@ -29,5 +29,6 @@ jobs:
         run: |
           dart pub global activate coverage
           echo "::add-path::$(dart pub global bin)"
+          cd test
           coverage combine
           coverage report --fail-under=80
