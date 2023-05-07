@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: /bin/sh -e {0}
+        shell: zsh -e {0}
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2
@@ -38,4 +38,3 @@ jobs:
           cd test
           coverage combine
           coverage report --fail-under=80
-          
