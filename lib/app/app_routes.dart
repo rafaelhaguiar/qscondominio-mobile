@@ -5,7 +5,7 @@ import 'package:qscondominio/app/features/login/presenter/pages/splash_page.dart
 import 'package:qscondominio/app/features/orders/presenter/pages/orders_page.dart';
 
 class AppRoutes {
-  //login
+  //login dois
   static const String splash = '/';
   static const String login = '/login';
 
