@@ -28,6 +28,5 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           pub global activate coverage
-          cd test
           coverage combine
           coverage report --fail-under=80
