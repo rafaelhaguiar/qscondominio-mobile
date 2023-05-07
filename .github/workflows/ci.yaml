@@ -19,6 +19,10 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+      - name: Install coverage
+        run: dart pub global activate coverage
+      - name: Add Dart bin to PATH
+        run: echo "::add-path::$(dart pub global bin)"
       - name: Run Lint
         run: flutter analyze --no-pub | grep -v 'TODO:'
       - name: Run tests with coverage
@@ -27,8 +31,6 @@ jobs:
       - name: Verify test coverage
         if: github.event_name == 'pull_request'
         run: |
-          dart pub global activate coverage
-          export PATH="$PATH":"~/.pub-cache/bin"
           cd test
           coverage combine
           coverage report --fail-under=80
