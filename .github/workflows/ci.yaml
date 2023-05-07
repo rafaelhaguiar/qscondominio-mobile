@@ -39,7 +39,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           flutter pub global activate very_good_cli 
-          very_good test -j 4 --optimization --coverage --test-randomize-ordering-seed random
+          very_good test -j 1 --optimization --coverage
       - name: 📊 Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
