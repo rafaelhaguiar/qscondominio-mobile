@@ -11,7 +11,7 @@ on:
       - 'main'
 
 jobs:
-  code-quality:
+  code_quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,6 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           dart pub global activate coverage
+          echo "::add-path::$(dart pub global bin)"
           coverage combine
           coverage report --fail-under=80
-      - name: Add coverage to PATH
-        run: echo "::add-path::$(dart pub global bin)"
