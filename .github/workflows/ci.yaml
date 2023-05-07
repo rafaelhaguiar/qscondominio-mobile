@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+      - 'hotfix/*'
+  pull_request:
+    branches:
+      - 'dev'
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Run Lint
+        run: flutter analyze --no-pub | grep -v 'TODO:'
+      - name: Run tests with coverage
+        if: github.event_name == 'pull_request'
+        run: flutter test --coverage
+      - name: Verify test coverage
+        if: github.event_name == 'pull_request'
+        run: |
+          pub global activate coverage
+          coverage combine
+          coverage report --fail-under=80
