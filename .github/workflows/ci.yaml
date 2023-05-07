@@ -23,7 +23,9 @@ jobs:
         with:
           channel: 'stable'
       - name: Test version
-        run: echo $0    
+        run: | 
+          echo $0  
+          which bash   
       - name: Flutter version
         run: flutter --version                     
       - name: Run Lint
@@ -31,8 +33,8 @@ jobs:
       - name: Add coverage to PATH
         run: echo "PATH=\$PATH:~/.pub-cache/bin" >> $GITHUB_ENV
       - name: Run tests 
-        shell: bash
-        run: flutter test       
+        run: flutter test    
+        shell: bash   
       - name: Run tests with coverage
         if: github.event_name == 'pull_request'
         run: flutter test --coverage
