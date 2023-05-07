@@ -40,9 +40,9 @@ jobs:
         run: |
           flutter pub global activate very_good_cli 
           very_good test -j 4 --optimization --coverage --test-randomize-ordering-seed random
-          - name: 📊 Check Code Coverage
-          uses: VeryGoodOpenSource/very_good_coverage@v2
-          with:
-            path: /coverage/lcov.info
-            min_coverage: 80
-          
+      - name: 📊 Check Code Coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v2
+        with:
+          path: ./coverage/lcov.info
+          min_coverage: 80
+        
