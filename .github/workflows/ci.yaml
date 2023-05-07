@@ -22,6 +22,10 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+      - name: Test version
+        run: echo $0    
+      - name: Flutter version
+        run: echo flutter --version                     
       - name: Run Lint
         run: flutter analyze --no-pub | grep -v 'TODO:'
       - name: Add coverage to PATH
