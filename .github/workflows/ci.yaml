@@ -28,7 +28,7 @@ jobs:
         run: echo "PATH=\$PATH:~/.pub-cache/bin" >> $GITHUB_ENV
       - name: Run tests with coverage
         if: github.event_name == 'pull_request'
-        run: /bin/bash -c "flutter test --coverage"
+        run: flutter test --coverage
       - name: Verify test coverage
         if: github.event_name == 'pull_request'
         run: |
