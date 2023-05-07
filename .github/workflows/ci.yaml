@@ -28,7 +28,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           dart pub global activate coverage
-          export PATH="$PATH":"$(dart pub global bin)"
+          export PATH="$PATH":"~/.pub-cache/bin"
           cd test
           coverage combine
           coverage report --fail-under=80
