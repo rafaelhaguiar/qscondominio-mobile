@@ -36,8 +36,8 @@ jobs:
         if: github.event_name == 'pull_request'
         run: flutter test --coverage
       - name: Verify test coverage
-        if: github.event_name == 'pull_request'
         run: |
+          if: github.event_name == 'pull_request'
           flutter pub global activate very_good_cli 
           very_good test -j 1 --optimization --coverage
       - name: 📊 Check Code Coverage
