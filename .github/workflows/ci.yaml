@@ -22,7 +22,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: Test version
+      - name: Check bash
         run: | 
           echo $0  
           which bash   
@@ -38,7 +38,11 @@ jobs:
       - name: Verify test coverage
         if: github.event_name == 'pull_request'
         run: |
-          dart pub global activate coverage
-          coverage report --fail-under=80
-        shell: bash
+          flutter pub global activate very_good_cli 
+          very_good test -j 4 --optimization --coverage --test-randomize-ordering-seed random
+          - name: 📊 Check Code Coverage
+          uses: VeryGoodOpenSource/very_good_coverage@v2
+          with:
+            path: ./coverage/lcov.info
+            min_coverage: 80
           
