@@ -39,7 +39,6 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           dart pub global activate coverage
-          coverage combine
           coverage report --fail-under=80
         shell: bash
           
