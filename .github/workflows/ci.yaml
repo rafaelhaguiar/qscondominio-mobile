@@ -26,6 +26,8 @@ jobs:
         run: flutter analyze --no-pub | grep -v 'TODO:'
       - name: Add coverage to PATH
         run: echo "PATH=\$PATH:~/.pub-cache/bin" >> $GITHUB_ENV
+      - name: Run tests 
+        run: flutter test       
       - name: Run tests with coverage
         if: github.event_name == 'pull_request'
         run: flutter test --coverage
