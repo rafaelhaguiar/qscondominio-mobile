@@ -1,0 +1,16 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+      - 'hotfix/*'
+
+
+# env:
+#   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/ci-pr.yaml
+  
