@@ -41,4 +41,5 @@ jobs:
           dart pub global activate coverage
           coverage combine
           coverage report --fail-under=80
+        shell: bash
           
