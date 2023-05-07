@@ -19,8 +19,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Install Bash
-        run: sudo apt-get install bash
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -30,7 +28,7 @@ jobs:
         run: echo "PATH=\$PATH:~/.pub-cache/bin" >> $GITHUB_ENV
       - name: Run tests with coverage
         if: github.event_name == 'pull_request'
-        run: /bin/bash -c "flutter test --coverage"
+        run: /bin/sh -c "flutter test --coverage"
       - name: Verify test coverage
         if: github.event_name == 'pull_request'
         run: |
