@@ -30,3 +30,5 @@ jobs:
           dart pub global activate coverage
           coverage combine
           coverage report --fail-under=80
+      - name: Add coverage to PATH
+        run: echo "::add-path::$(dart pub global bin)"
