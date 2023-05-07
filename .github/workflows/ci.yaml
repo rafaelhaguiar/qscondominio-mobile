@@ -32,7 +32,6 @@ jobs:
         run: flutter analyze --no-pub | grep -v 'TODO:'
       - name: Run tests 
         run: flutter test    
-        shell: bash   
       - name: Run tests with coverage
         if: github.event_name == 'pull_request'
         run: flutter test --coverage
