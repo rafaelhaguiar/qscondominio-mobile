@@ -1,0 +1,33 @@
+name: ci-push
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+      - 'hotfix/*'
+
+
+# env:
+#   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  code_quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Check bash
+        run: | 
+          echo $0  
+          which bash   
+      - name: Flutter version
+        run: flutter --version                     
+      - name: Run Lint
+        run: flutter analyze --no-pub | grep -v 'TODO:'
+      - name: Run tests 
+        run: flutter test    
+
+        
