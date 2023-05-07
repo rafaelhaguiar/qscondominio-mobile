@@ -11,7 +11,7 @@ on:
       - 'main'
 
 jobs:
-  build:
+  code-quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +27,6 @@ jobs:
       - name: Verify test coverage
         if: github.event_name == 'pull_request'
         run: |
-          pub global activate coverage
+          dart pub global activate coverage
           coverage combine
           coverage report --fail-under=80
