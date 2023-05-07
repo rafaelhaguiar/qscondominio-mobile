@@ -16,7 +16,6 @@ env:
 jobs:
   code_quality:
     runs-on: ubuntu-latest
-    shell: /bin/bash
 
     steps:
       - uses: actions/checkout@v2
