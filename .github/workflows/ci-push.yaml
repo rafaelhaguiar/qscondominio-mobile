@@ -10,6 +10,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Get origin branch name
+        id: get-origin-branch
         run: echo "::set-output name=origin_branch::$(git rev-parse --symbolic-full-name HEAD@{upstream})"
 
       - name: Check origin branch name
@@ -21,7 +22,7 @@ jobs:
 
   code_quality:
     runs-on: ubuntu-latest
-    if: always() && steps.check-origin-branch.outputs.exitCode == 0
+    if: always() && needs.check-origin-branch.result == 'success'
     steps:
       - uses: actions/checkout@v2
 
