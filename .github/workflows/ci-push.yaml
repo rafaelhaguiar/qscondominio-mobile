@@ -11,7 +11,7 @@ jobs:
 
       - name: Get origin branch name
         id: get-origin-branch
-        run: echo "::set-output name=origin_branch::$(git rev-parse --symbolic-full-name HEAD@{upstream})"
+        run: echo "::set-output name=origin_branch::$(git rev-parse --abbrev-ref HEAD)"
 
       - name: Check origin branch name
         run: |
