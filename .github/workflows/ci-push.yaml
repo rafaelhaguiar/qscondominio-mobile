@@ -2,9 +2,6 @@ name: ci-push
 
 on:
   push:
-    branches:
-      - 'feature/*'
-      - 'hotfix/*'
 
 jobs:
   check-origin-branch:
@@ -24,7 +21,7 @@ jobs:
 
   code_quality:
     runs-on: ubuntu-latest
-
+    if: ${{ always() && steps.check-origin-branch.outputs.exitCode == 0 }}
     steps:
       - uses: actions/checkout@v2
 
