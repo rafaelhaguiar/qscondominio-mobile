@@ -15,7 +15,7 @@ jobs:
 
       - name: Check origin branch name
         run: |
-          if [[ ! ${{ steps.get-origin-branch.outputs.origin_branch }} =~ ^(PRJ-|release\/|hotfix-).*$ ]]; then
+          if [[ ! "${{ steps.get-origin-branch.outputs.origin_branch }}" =~ ^(PRJ-|release\/|hotfix-).*$ ]]; then
             echo "Error: Origin branch name must start with PRJ-, release/, or hotfix-."
             exit 1
           fi
