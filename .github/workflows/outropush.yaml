@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.4.3
 
       - name: Set origin branch
         id: set_branch
@@ -28,16 +28,19 @@ jobs:
     if: always() && needs.check-origin-branch.result == 'success'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.4.3
 
       - name: Set up Flutter
         run: |
           # Obter a versão mais recente estável do Flutter
           FLUTTER_VERSION=$(curl -s https://storage.googleapis.com/flutter_infra/releases/releases_linux.json | jq -r '.releases[] | select(.channel == "stable") | .version')
           
+          # Ajustar o nome do arquivo de destino
+          FILE_NAME="flutter_${FLUTTER_VERSION}_stable.tar.xz"
+
           # Instalação do Flutter
-          wget "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz"
-          tar xf "flutter_linux_${FLUTTER_VERSION}-stable.tar.xz"
+          wget "https://storage.googleapis.com/flutter_infra/releases/stable/linux/${FILE_NAME}"
+          tar xf "${FILE_NAME}"
 
           # Configuração das variáveis de ambiente
           echo 'export PATH="$PATH:$PWD/flutter/bin"' >> $GITHUB_ENV
