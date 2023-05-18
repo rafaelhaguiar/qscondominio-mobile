@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.3
+      - uses: actions/checkout@v2
 
       - name: Set origin branch
         id: set_branch
@@ -28,7 +28,7 @@ jobs:
     if: always() && needs.check-origin-branch.result == 'success'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.3
+      - uses: actions/checkout@v2
 
       - name: Set up Flutter
         run: |
