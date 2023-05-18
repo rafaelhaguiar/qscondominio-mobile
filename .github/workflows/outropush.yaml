@@ -23,30 +23,30 @@ jobs:
   code_quality:
     runs-on: ubuntu-latest
     if: always() && needs.check-origin-branch.result == 'success'
-  steps:
-    - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-    - name: Set up Flutter
-      run: |
-        # Instalação do Flutter
-        wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.8.1-stable.tar.xz
-        tar xf flutter_linux_2.8.1-stable.tar.xz
+      - name: Set up Flutter
+        run: |
+          # Instalação do Flutter
+          wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.8.1-stable.tar.xz
+          tar xf flutter_linux_2.8.1-stable.tar.xz
 
-        # Configuração das variáveis de ambiente
-        echo 'export PATH="$PATH:$PWD/flutter/bin"' >> $GITHUB_ENV
-        echo 'export PATH="$PATH:$PWD/flutter/.pub-cache/bin"' >> $GITHUB_ENV
+          # Configuração das variáveis de ambiente
+          echo 'export PATH="$PATH:$PWD/flutter/bin"' >> $GITHUB_ENV
+          echo 'export PATH="$PATH:$PWD/flutter/.pub-cache/bin"' >> $GITHUB_ENV
 
-    - name: Check bash
-      run: | 
-        echo $0  
-        which bash   
+      - name: Check bash
+        run: | 
+          echo $0  
+          which bash   
 
-    - name: Flutter version
-      run: flutter --version                     
+      - name: Flutter version
+        run: flutter --version                     
 
-    - name: Run Lint
-      run: flutter analyze --no-pub | grep -v 'TODO:'
+      - name: Run Lint
+        run: flutter analyze --no-pub | grep -v 'TODO:'
 
-    - name: Run tests 
-      run: flutter test
+      - name: Run tests 
+        run: flutter test
 
