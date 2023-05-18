@@ -32,9 +32,12 @@ jobs:
 
       - name: Set up Flutter
         run: |
+          # Obter a versão mais recente estável do Flutter
+          FLUTTER_VERSION=$(curl -s https://storage.googleapis.com/flutter_infra/releases/releases_linux.json | jq -r '.releases[] | select(.channel == "stable") | .version')
+          
           # Instalação do Flutter
-          wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.8.1-stable.tar.xz
-          tar xf flutter_linux_2.8.1-stable.tar.xz
+          wget "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz"
+          tar xf "flutter_linux_${FLUTTER_VERSION}-stable.tar.xz"
 
           # Configuração das variáveis de ambiente
           echo 'export PATH="$PATH:$PWD/flutter/bin"' >> $GITHUB_ENV
