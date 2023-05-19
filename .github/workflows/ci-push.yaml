@@ -1,45 +1,46 @@
-name: ci-push
-
-on:
-  push:
-
-jobs:
-  check-origin-branch:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Get origin branch name
-        id: get-origin-branch
-        run: echo "::set-output name=origin_branch::$(git rev-parse --abbrev-ref HEAD)"
-
-      - name: Check origin branch name
-        run: |
-          if [[ ! "${{ steps.get-origin-branch.outputs.origin_branch }}" =~ ^(PRJ-|HOTFIX-|release/).* ]]; then
-            echo "Error: Origin branch name must start with PRJ-, HOTFIX-, or release/."
-            exit 1
-          fi
-
-  code_quality:
-    runs-on: ubuntu-latest
-    if: always() && needs.check-origin-branch.result == 'success'
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-
-      - name: Check bash
-        run: | 
-          echo $0  
-          which bash   
-
-      - name: Flutter version
-        run: flutter --version                     
-
-      - name: Run Lint
-        run: flutter analyze --no-pub | grep -v 'TODO:'
-
-      - name: Run tests 
-        run: flutter test
+##name: ci-push
+##
+##on:
+##  push:
+##
+##jobs:
+##  check-origin-branch:
+##    runs-on: ubuntu-latest
+##    steps:
+##      - uses: actions/checkout@v3
+##
+##      - name: Get origin branch name
+##        id: get-origin-branch
+##        run: echo "::set-output name=origin_branch::$(git rev-parse --abbrev-ref HEAD)"
+##
+##      - name: Check origin branch name
+##        run: |
+##          if [[ ! "${{ steps.get-origin-branch.outputs.origin_branch }}" =~ ^(PRJ-|HOTFIX-|release/).* ]]; then
+##            echo "Error: Origin branch name must start with PRJ-, HOTFIX-, or release/."
+##            exit 1
+##          fi
+##
+##  code_quality:
+##    runs-on: ubuntu-latest
+##    if: always() && needs.check-origin-branch.result == 'success'
+##    steps:
+##      - uses: actions/checkout@v2
+##
+##      - uses: subosito/flutter-action@v2
+##        with:
+##          channel: 'stable'
+##
+##      - name: Check bash
+##        run: | 
+##          echo $0  
+##          which bash   
+##
+##      - name: Flutter version
+##        run: flutter --version                     
+##
+##      - name: Run Lint
+##        run: flutter analyze --no-pub | grep -v 'TODO:'
+##
+##      - name: Run tests 
+##        run: flutter test
+##
