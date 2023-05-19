@@ -1,7 +1,7 @@
 name: ci-pr
 
 on:
-  push:
+  pull_request:
     
 jobs:
   check-origin-branch:
@@ -18,7 +18,7 @@ jobs:
         id: check_branch
         run: |
           if [[ ! "${{ env.origin_branch }}" =~ ^(PRJ-|HOTFIX-|release/).* ]]; then
-            echo "Error: Origin branch name must start with PRJ-, HOTFIX-, or release/."
+            echo "Error: The Origin branch name must start with PRJ-, HOTFIX-, or release/."
             exit 1
           fi
 
